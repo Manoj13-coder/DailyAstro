@@ -23,7 +23,7 @@
                     <% for(let i=0 ; i < Posts.length ; i++) { %>
                         <% if(Posts[i].typeUrl == 'video') {%>
                             <div class="col-lg-6 col-md-6 col-12">
-                                <div class="card mb-4 text-center">
+                                <div class="card mb-4 text-center" style="background-color:#FCF3CF;">
                                     <iframe height='200' src="<%= Posts[i].url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                     <div class="card-body">
                                         <h4 class="card-title"><a href="/getBookByAuthor/?id=<%= Posts[i]._id %>" class="text-decoration-none"><%= Posts[i].title %></a></h4>
@@ -34,7 +34,7 @@
                             </div>
                         <%} else {%>
                             <div class="col-lg-6 col-md-6 col-12">
-                                <div class="card mb-4 text-center">
+                                <div class="card mb-4 text-center" style="background-color:#D5F5E3;">
                                     <img class="card-img-top" height='200' src="<%= Posts[i].url %>" alt="Card image">
                                     <div class="card-body">
                                         <h4 class="card-title"><a href="/getBookByAuthor/?id=<%= Posts[i]._id %>" class="text-decoration-none"><%= Posts[i].title %></a></h4>
