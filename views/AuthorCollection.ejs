@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Author-Collection</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Overpass&family=PT+Sans+Narrow&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="/earth.png">   
+        <style>
+            body{
+                margin:0px;
+                padding:0px;
+                box-sizing:border-box;
+                background-color:white;
+                /*font-family: 'Overpass', sans-serif;
+                font-family: 'PT Sans Narrow', sans-serif;*/
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+            <a><img class="rounded-circle" width="50" height="50" src="/earth.png"></a>
+            <a href="/index" class="navbar-brand ml-2" style="color:black;">DailyAstro</a>
+        </nav>
+        <div class="text-center text-dark">
+            <h3 class="text-white mt-3"><%= Posts.author %> Post's</h3>
+            <div class="container mt-5 mb-5 mx-auto text-center">
+                <div class="row">
+                    <% for(let i=0 ; i < Posts.discoveries.length ; i++) { %>
+                        <% if(Posts.discoveries[i].typeUrl == 'video') {%>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="card mb-4 text-center" style="background-color:#FCF3CF;">
+                                    <iframe height='200' src="<%= Posts.discoveries[i].url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <div class="card-body">
+                                        </h4><h4 class="card-title"><a href="/getBookByAuthor/?id=<%= Posts.discoveries[i].uniqueId %>" class="text-decoration-none"><%= Posts.discoveries[i].title %></a></h4>
+                                        <p class="card-text">Author : <%= Posts.author %></p>
+                                        <p class="card-text">Date : <%= Posts.discoveries[i].date %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <%} else {%>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="card mb-4 text-center" style="background-color:#D5F5E3;">
+                                    <img class="card-img-top" height='200' src="<%= Posts.discoveries[i].url %>" alt="Card image">
+                                    <div class="card-body">
+                                        </h4><h4 class="card-title"><a href="/getBookByAuthor/?id=<%= Posts.discoveries[i].uniqueId %>" class="text-decoration-none"><%= Posts.discoveries[i].title %></a></h4>
+                                        <p class="card-text">Author : <%= Posts.author %></p>
+                                        <p class="card-text">Date : <%= Posts.discoveries[i].date %></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

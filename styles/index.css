@@ -1,0 +1,22 @@
+body{
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;
+    background-color:white;
+    /*font-family: 'Overpass', sans-serif;
+    font-family: 'PT Sans Narrow', sans-serif;*/
+}#Header{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows:1;
+}#SearchNav{
+    display:grid;
+    grid-template-rows:1fr;
+    grid-template-columns:repeat(3,1fr);
+}#SearchNav button{
+    display:flex;
+    font-size:20px;
+    text-decoration:none;
+    justify-content:center;
+    align-items:center;
+}

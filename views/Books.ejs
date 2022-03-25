@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Post-Collection</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Overpass&family=PT+Sans+Narrow&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" type="text/css" href="index.css"> 
+        <link rel="icon" type="image/x-icon" href="earth.png">
+    </head>
+    <body>
+        <div style="text-align:center;">
+            <input class="mt-3" placeholder="Search Post" style="width:70vw;
+            text-align:center;
+            outline:none;
+            background-color:#EAEDED;
+            border:none;
+            border-top-left-radius:1rem;
+            border-bottom-right-radius:1rem;
+            height:35px;" type="search" id="SearchBook" onkeypress="check1(event);"><br/>
+            <button class="btn btn-secondary fa fa-search mt-2" onclick="Search1();"></button>
+            <div id="ShowCase">
+                <div class="container-fluid mt-4 mb-5">
+                    <div class="row">
+                        <% for(let i=0 ; i < Posts.length ; i++) { %>
+                            <% if(Posts[i].typeUrl == 'video') {%>
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="card mb-4 text-center" height='200' style="background-color:#FCF3CF;">
+                                        <iframe height='200' src="<%= Posts[i].url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        <div class="class-body mt-3 mb-4">
+                                            <h4 class="card-title"><a href="/getBookByAuthor/?id=<%= Posts[i]._id %>" class="text-decoration-none"><%= Posts[i].title %></a></h4>
+                                            <p class="card-text">Author : <%= Posts[i].copyright %></p>
+                                            <p class="card-text">Date : <%= Posts[i].date %></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <%} else {%>
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <div class="card mb-4 text-center" style="background-color:#D5F5E3;">
+                                        <img class="card-img-top" height='200' src="<%= Posts[i].url %>" alt="Card Image">
+                                        <div class="card-body">
+                                            <h4 class="card-title"><a href="/getBookByAuthor/?id=<%= Posts[i]._id %>" class="text-decoration-none"><%= Posts[i].title %></a></h4>
+                                            <p class="card-text">Author : <%= Posts[i].copyright %></p>
+                                            <p class="card-text">Date : <%= Posts[i].date %></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% } %>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="index.js"></script>
+    </body>
+</html>
